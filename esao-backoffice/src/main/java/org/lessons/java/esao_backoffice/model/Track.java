@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -23,6 +24,9 @@ public class Track {
   private String title;
 
   private String duration;
+
+  @Min(value = 0)
+  private Integer position;
 
   private String listeningLink;
 
@@ -56,6 +60,14 @@ public class Track {
 
   public void setDuration(String duration) {
     this.duration = duration;
+  }
+
+  public Integer getPosition() {
+    return position;
+  }
+
+  public void setPosition(Integer position) {
+    this.position = position;
   }
 
   public String getListeningLink() {
