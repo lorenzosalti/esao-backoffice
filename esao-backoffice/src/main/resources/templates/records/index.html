@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/resources :: head}" />
+
+<body>
+
+  <main>
+    <div class="container">
+      <h1 class="text-center mb-3">Every Sound At Once</h1>
+
+      <div th:if="${records.size() > 0}">
+        <h2 class="text-center mb-3">Lista di dischi</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Titolo</th>
+              <th>Artista</th>
+              <th>Condizione</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="record : ${records}" th:object="${record}">
+              <td>[[*{title}]]</td>
+              <td>[[*{artist}]]</td>
+              <td>[[*{condition}]]</td>
+              <td><a class="btn btn-primary" th:href="@{/records/{id}(id=*{id})}">Dettaglio</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div th:unless="${records.size() > 0}">
+        <h2 class="text-center mb-3">La lista di dischi è vuota</h2>
+      </div>
+
+      <a href="/records/create" class="btn btn-secondary">Aggiungi Disco</a>
+    </div>
+  </main>
+
+  <script th:replace="~{fragments/resources :: script}"></script>
+</body>
+
+</html>
