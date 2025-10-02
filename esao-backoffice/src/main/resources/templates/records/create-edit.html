@@ -8,7 +8,8 @@
   <main class="container">
     <h1 class="text-center mb-3">Every Sound At Once</h1>
     <h2 class="text-center mb-3" th:unless="${edit}">Inserimento di un nuovo disco</h2>
-    <h2 class="text-center mb-3" th:if="${edit}">Modifica il Disco [[${record.title}]] <br>di [[${record.artist}]]</h2>
+    <h2 class="text-center mb-3" th:if="${edit}">Modifica il Disco "[[${record.title}]]" <br>di [[${record.artist}]]
+    </h2>
 
     <form id="record-input-form" th:action="${edit} ? @{/records/edit/{id}(id=${record.id})} : @{/records/create}"
       method="post" th:object="${record}">
@@ -56,6 +57,48 @@
         <div th:if="${#fields.hasErrors('condition.id')}" class="invalid-feedback">
           <ul>
             <li th:each="err : ${#fields.errors('condition.id')}" th:text="${err}"></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description-input" class="form-label">Descrizione</label>
+        <textarea type="text" class="form-control" id="description-input" rows="3" th:field="*{description}"
+          th:errorClass="is-invalid" />
+        <div th:if="${#fields.hasErrors('description')}" class="invalid-feedback">
+          <ul>
+            <li th:each="err : ${#fields.errors('description')}" th:text="${err}"></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="duration-input" class="form-label">Tempo di durata del disco</label>
+        <input type="text" class="form-control" id="duration-input" th:field="*{duration}" th:errorClass="is-invalid">
+        <div th:if="${#fields.hasErrors('duration')}" class="invalid-feedback">
+          <ul>
+            <li th:each="err : ${#fields.errors('duration')}" th:text="${err}"></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="listeningLink-input" class="form-label">Link per l'ascolto</label>
+        <input type="text" class="form-control" id="listeningLink-input" th:field="*{listeningLink}"
+          th:errorClass="is-invalid">
+        <div th:if="${#fields.hasErrors('listeningLink')}" class="invalid-feedback">
+          <ul>
+            <li th:each="err : ${#fields.errors('listeningLink')}" th:text="${err}"></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="coverPath-input" class="form-label">Link all'immagine di copertina</label>
+        <input type="text" class="form-control" id="coverPath-input" th:field="*{coverPath}" th:errorClass="is-invalid">
+        <div th:if="${#fields.hasErrors('coverPath')}" class="invalid-feedback">
+          <ul>
+            <li th:each="err : ${#fields.errors('coverPath')}" th:text="${err}"></li>
           </ul>
         </div>
       </div>
