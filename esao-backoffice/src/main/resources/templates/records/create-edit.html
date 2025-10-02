@@ -104,7 +104,7 @@
       </div>
 
       <button class="btn btn-success" type="submit">Conferma</button>
-      <button class="btn btn-warning">Resetta dati inseriti</button>
+      <button class="btn btn-warning" type="reset" th:unless="${edit}">Resetta dati inseriti</button>
     </form>
   </main>
 
