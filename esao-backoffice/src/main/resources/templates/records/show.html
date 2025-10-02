@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/resources :: head}" />
+
+<body>
+
+  <main>
+    <div class="container" th:object="${record}">
+      <h1 class="text-center mb-3">Every Sound At Once</h1>
+
+      <div class="container d-flex justify-content-around mb-3">
+        <span>
+          <h2 class="text-center mb-1">[[*{title}]]</h2>
+          <h3 class="text-center">by [[*{artist}]]</h3>
+        </span>
+
+        <img th:src="*{coverPath}" th:alt="|*{title} cover|">
+      </div>
+
+      <h3 class="mb-3">Stato di conservazione: <strong>[[*{condition.name}]]</strong></h3>
+
+      <h4 class="mb-2">Anno di stampa: <strong>[[*{pressingYear}]]</strong> <span th:if="*{isFirstPress}">(Prima
+          stampa!)</span></h4>
+      <h4 class="mb-2" th:if="*{duration}">Durata del disco: <strong>[[*{duration}]]</strong></h4>
+      <span class="mb-2" th:if="*{description}">
+        <h4 class="mb-1">Descrizione:</h4>
+        <p>[[*{description}]]</p>
+      </span>
+
+      <a th:href="*{listeningLink}" target="_blank">Link all'ascolto</a>
+
+    </div>
+  </main>
+
+  <script th:replace="~{fragments/resources :: script}"></script>
+</body>
+
+</html>
