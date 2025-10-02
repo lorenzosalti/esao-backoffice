@@ -28,7 +28,7 @@
               <td>[[*{artist}]]</td>
               <td>[[*{condition.name}]]</td>
               <td><a class="btn btn-primary" th:href="@{/records/{id}(id=*{id})}">Dettaglio</a></td>
-              <td><a class="btn btn-secondary" th:href="@{/records/edit/{id}(id=*{id})}">Modifica</a></td>
+              <td><a class="btn btn-warning" th:href="@{/records/edit/{id}(id=*{id})}">Modifica</a></td>
               <td>
                 <form th:action="@{/records/delete/{id}(id=*{id})}" method="post">
                   <button class="btn btn-danger" type="submit">Cancella</button>
