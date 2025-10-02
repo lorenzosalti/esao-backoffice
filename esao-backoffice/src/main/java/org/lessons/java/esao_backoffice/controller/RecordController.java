@@ -77,4 +77,10 @@ public class RecordController {
     recordRepository.save(recordToStore);
     return "redirect:/records";
   }
+
+  @PostMapping("/delete/{id}")
+  public String delete(@PathVariable Integer id) {
+    recordRepository.deleteById(id);
+    return "redirect:/records";
+  }
 }
