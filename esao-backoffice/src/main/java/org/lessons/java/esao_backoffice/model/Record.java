@@ -35,7 +35,7 @@ public class Record {
   private String pressingYear;
 
   @Column(name = "is_first_press")
-  private boolean isFirstPress;
+  private Boolean isFirstPress;
 
   private String duration;
 
@@ -91,11 +91,11 @@ public class Record {
     this.pressingYear = pressingYear;
   }
 
-  public boolean isFirstPress() {
+  public Boolean getIsFirstPress() {
     return isFirstPress;
   }
 
-  public void setFirstPress(boolean isFirstPress) {
+  public void setIsFirstPress(Boolean isFirstPress) {
     this.isFirstPress = isFirstPress;
   }
 
