@@ -18,14 +18,16 @@
               <th>Artista</th>
               <th>Condizione</th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <tr th:each="record : ${records}" th:object="${record}">
               <td>[[*{title}]]</td>
               <td>[[*{artist}]]</td>
-              <td>[[*{condition}]]</td>
+              <td>[[*{condition.name}]]</td>
               <td><a class="btn btn-primary" th:href="@{/records/{id}(id=*{id})}">Dettaglio</a></td>
+              <td><a class="btn btn-secondary" th:href="@{/records/edit/{id}(id=*{id})}">Modifica</a></td>
             </tr>
           </tbody>
         </table>
