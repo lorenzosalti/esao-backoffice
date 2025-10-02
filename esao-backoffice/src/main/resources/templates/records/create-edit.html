@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/resources :: head}" />
+
+<body>
+
+  <main class="container">
+    <h1 class="text-center mb-3">Every Sound At Once</h1>
+    <h2 class="text-center mb-3" th:unless="${edit}">Inserimento di un nuovo disco</h2>
+    <h2 class="text-center mb-3" th:if="${edit}">Modifica il Disco [[${record.title}]] <br>di [[${record.artist}]]</h2>
+
+    <form id="record-input-form" th:action="${edit} ? @{/records/edit/{id}(id=${record.id})} : @{/records/create}"
+      method="post" th:object="${record}">
+      <div class="mb-3">
+        <label for="title-input" class="form-label">Titolo</label>
+        <input type="text" class="form-control" id="title-input" th:field="*{title}" th:errorClass="is-invalid">
+        <div th:if="${#fields.hasErrors('title')}" class="invalid-feedback">
+          <ul>
+            <li th:each="err : ${#fields.errors('title')}" th:text="${err}"></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="artist-input" class="form-label">Artista</label>
+        <input type="text" class="form-control" id="artist-input" th:field="*{artist}" th:errorClass="is-invalid">
+        <div th:if="${#fields.hasErrors('artist')}" class="invalid-feedback">
+          <ul>
+            <li th:each="err : ${#fields.errors('artist')}" th:text="${err}"></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="year-input" class="form-label">Anno di Stampa</label>
+        <input type="text" class="form-control" id="year-input" th:field="*{pressingYear}" th:errorClass="is-invalid">
+        <div th:if="${#fields.hasErrors('pressingYear')}" class="invalid-feedback">
+          <ul>
+            <li th:each="err : ${#fields.errors('pressingYear')}" th:text="${err}"></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="firstPress-input" th:field="${record.isFirstPress}" />
+        <label class="form-check-label" for="firstPress-input">Il disco è una prima stampa</label>
+      </div>
+
+      <div class="mb-3">
+        <label for="condition-input" class="form-label">Condizione del Disco</label>
+        <select name="condition" class="form-control" id="condition-input" th:field="${record.condition.id}">
+          <option value="">Seleziona</option>
+          <option th:each="condition : ${conditions}" th:value="${condition.id}">[[${condition.name}]]</option>
+        </select>
+        <div th:if="${#fields.hasErrors('condition.id')}" class="invalid-feedback">
+          <ul>
+            <li th:each="err : ${#fields.errors('condition.id')}" th:text="${err}"></li>
+          </ul>
+        </div>
+      </div>
+
+      <button class="btn btn-success" type="submit">Conferma</button>
+      <button class="btn btn-warning">Resetta dati inseriti</button>
+    </form>
+  </main>
+
+  <script th:replace="~{fragments/resources :: script}"></script>
+</body>
+
+</html>
