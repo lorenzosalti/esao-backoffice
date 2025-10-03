@@ -4,9 +4,10 @@
 <head th:replace="~{fragments/resources :: head}" />
 
 <body>
+  <header th:insert="~{fragments/navbar :: navbar}" />
 
   <main class="container">
-    <h1 class="text-center mb-3">Every Sound At Once</h1>
+
     <h2 class="text-center mb-3" th:unless="${edit}">Inserimento di un nuovo disco</h2>
     <h2 class="text-center mb-3" th:if="${edit}">Modifica il Disco "[[${record.title}]]" <br>di [[${record.artist}]]
     </h2>

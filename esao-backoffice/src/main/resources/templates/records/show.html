@@ -4,10 +4,11 @@
 <head th:replace="~{fragments/resources :: head}" />
 
 <body>
+  <header th:insert="~{fragments/navbar :: navbar}" />
 
   <main>
     <div class="container" th:object="${record}">
-      <h1 class="text-center mb-3">Every Sound At Once</h1>
+
 
       <div class="container d-flex justify-content-around mb-3">
         <span>
@@ -18,7 +19,10 @@
         <img th:src="*{coverPath}" th:alt="|*{title} cover|">
       </div>
 
-      <h3 class="mb-3">Stato di conservazione: <strong>[[*{condition.name}]]</strong></h3>
+      <div class="mb-3 d-flex justify-content-between">
+        <h3>Stato di conservazione: <strong>[[*{condition.name}]]</strong></h3>
+        <a class="btn btn-primary" th:href="@{/conditions}">Visualizza tutti</a>
+      </div>
 
       <h4 class="mb-2">Anno di stampa: <strong>[[*{pressingYear}]]</strong> <span th:if="*{isFirstPress}">(Prima
           stampa!)</span></h4>
