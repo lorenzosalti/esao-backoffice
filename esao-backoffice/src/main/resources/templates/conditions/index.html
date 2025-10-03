@@ -27,10 +27,30 @@
               <td><a class="btn btn-primary" th:href="@{/conditions/{id}(id=*{id})}">Dettaglio</a></td>
               <td><a class="btn btn-warning" th:href="@{/conditions/edit/{id}(id=*{id})}">Modifica</a></td>
               <td>
-                <form th:action="@{/conditions/delete/{id}(id=*{id})}" method="post">
-                  <button class="btn btn-danger" type="submit">Elimina</button>
-                </form>
+                <button class="btn btn-danger" type="button" data-bs-toggle="modal"
+                  th:data-bs-target="'#delete-modal-' + *{id}">Elimina</button>
               </td>
+              <div class="modal fade" th:id="'delete-modal-' + *{id}" tabindex="-1"
+                aria-labelledby="'delete-modal-label-' + *{id}" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="'delete-modal-label-' + *{id}">Attenzione!</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Stai per cancellare lo Stato "[[*{name}]]". <br>
+                      Nel caso in cui ci siano dei Dischi associati, verranno cancellati anch'essi.
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                      <form th:action="@{/records/delete/{id}(id=*{id})}" method="post">
+                        <button class="btn btn-danger" type="submit">Conferma</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </tr>
           </tbody>
         </table>
