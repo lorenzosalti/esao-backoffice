@@ -14,6 +14,7 @@
         <table>
           <thead>
             <tr>
+              <th>Id</th>
               <th>Titolo</th>
               <th>Artista</th>
               <th>Condizione</th>
@@ -24,16 +25,36 @@
           </thead>
           <tbody>
             <tr th:each="record : ${records}" th:object="${record}">
+              <td>[[*{id}]]</td>
               <td>[[*{title}]]</td>
               <td>[[*{artist}]]</td>
               <td>[[*{condition.name}]]</td>
               <td><a class="btn btn-primary" th:href="@{/records/{id}(id=*{id})}">Dettaglio</a></td>
               <td><a class="btn btn-warning" th:href="@{/records/edit/{id}(id=*{id})}">Modifica</a></td>
               <td>
-                <form th:action="@{/records/delete/{id}(id=*{id})}" method="post">
-                  <button class="btn btn-danger" type="submit">Elimina</button>
-                </form>
+                <button class="btn btn-danger" type="button" data-bs-toggle="modal"
+                  th:data-bs-target="'#delete-modal-' + *{id}">Elimina</button>
               </td>
+              <div class="modal fade" th:id="'delete-modal-' + *{id}" tabindex="-1"
+                aria-labelledby="'delete-modal-label-' + *{id}" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="'delete-modal-label-' + *{id}">Attenzione!</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Stai per cancellare il Disco "[[*{title}]]".
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                      <form th:action="@{/records/delete/{id}(id=*{id})}" method="post">
+                        <button class="btn btn-danger" type="submit">Conferma</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </tr>
           </tbody>
         </table>
@@ -45,6 +66,8 @@
 
       <a href="/records/create" class="btn btn-secondary">Aggiungi Disco</a>
     </div>
+
+
   </main>
 
   <script th:replace="~{fragments/resources :: script}"></script>
