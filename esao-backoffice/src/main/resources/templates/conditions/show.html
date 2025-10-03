@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/resources :: head}" />
+
+<body>
+  <header th:insert="~{fragments/navbar :: navbar}" />
+
+  <main>
+    <div class="container" th:object="${condition}">
+
+
+      <h2 class="text-center mb-3">[[*{name}]]</h2>
+
+      <span class="mb-2" th:if="*{description}">
+        <h4 class="mb-1">Descrizione:</h4>
+        <p>[[*{description}]]</p>
+      </span>
+
+      <div class="mb-3" th:if="*{records.size() > 0}">
+        <h4 class="mb-3">Lista di Dischi in questo Stato</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Titolo</th>
+              <th>Artista</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="record : *{records}" th:object="${record}">
+              <td>[[*{title}]]</td>
+              <td>[[*{artist}]]</td>
+              <td><a class="btn btn-primary" th:href="@{/records/{id}(id=*{id})}">Dettaglio</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="mb-3" th:unless="*{records.size() > 0}">Non ci sono Dischi in questo Stato all'interno della
+        collezione.
+      </h4>
+
+    </div>
+  </main>
+
+  <script th:replace="~{fragments/resources :: script}"></script>
+</body>
+
+</html>

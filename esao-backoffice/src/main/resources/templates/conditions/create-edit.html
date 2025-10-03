@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/resources :: head}" />
+
+<body>
+  <header th:insert="~{fragments/navbar :: navbar}" />
+
+  <main class="container">
+
+    <h2 class="text-center mb-3" th:unless="${edit}">Nuovo Stato di Conservazione</h2>
+    <h2 class="text-center mb-3" th:if="${edit}">Modifica dello Stato di Conservazione "[[${condition.name}]]"</h2>
+
+    <form id="condition-input-form"
+      th:action="${edit} ? @{/conditions/edit/{id}(id=${condition.id})} : @{/conditions/create}" method="post"
+      th:object="${condition}">
+      <div class="mb-3">
+        <label for="name-input" class="form-label">Stato</label>
+        <input type="text" class="form-control" id="name-input" th:field="*{name}" th:errorClass="is-invalid">
+        <div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+          <ul>
+            <li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description-input" class="form-label">Descrizione</label>
+        <textarea type="text" class="form-control" id="description-input" rows="3" th:field="*{description}"
+          th:errorClass="is-invalid" />
+        <div th:if="${#fields.hasErrors('description')}" class="invalid-feedback">
+          <ul>
+            <li th:each="err : ${#fields.errors('description')}" th:text="${err}"></li>
+          </ul>
+        </div>
+      </div>
+
+      <button class="btn btn-success" type="submit">Conferma</button>
+      <button class="btn btn-warning" type="reset" th:unless="${edit}">Resetta dati inseriti</button>
+    </form>
+  </main>
+
+  <script th:replace="~{fragments/resources :: script}"></script>
+</body>
+
+</html>

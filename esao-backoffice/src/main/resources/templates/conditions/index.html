@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/resources :: head}" />
+
+<body>
+  <header th:insert="~{fragments/navbar :: navbar}" />
+
+  <main>
+    <div class="container">
+
+
+      <div th:if="${conditions.size() > 0}">
+        <h2 class="text-center mb-3">Stati di Conservazione</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Stato</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="condition : ${conditions}" th:object="${condition}">
+              <td>[[*{name}]]</td>
+              <td><a class="btn btn-primary" th:href="@{/conditions/{id}(id=*{id})}">Dettaglio</a></td>
+              <td><a class="btn btn-warning" th:href="@{/conditions/edit/{id}(id=*{id})}">Modifica</a></td>
+              <td>
+                <form th:action="@{/conditions/delete/{id}(id=*{id})}" method="post">
+                  <button class="btn btn-danger" type="submit">Cancella</button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div th:unless="${conditions.size() > 0}">
+        <h2 class="text-center mb-3">Non esistono informazioni riguardo gli stati di conservazione dei Dischi</h2>
+      </div>
+
+      <a href="/conditions/create" class="btn btn-secondary">Crea Stato</a>
+    </div>
+  </main>
+
+  <script th:replace="~{fragments/resources :: script}"></script>
+</body>
+
+</html>
