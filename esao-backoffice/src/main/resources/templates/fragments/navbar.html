@@ -1,0 +1,29 @@
+<!-- navbar -->
+<nav th:fragment="navbar" class="navbar navbar-expand-lg bg-body-tertiary mb-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Every Sound At Once</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/records">Dischi</a>
+        </li>
+        <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+          <a class="nav-link" href="/conditions">Conservazione</a>
+        </li>
+      </ul>
+      <!-- <a href="/login" class="btn btn-primary" sec:authorize="isAnonymous()">Login</a>
+      <div class="user-info" sec:authorize="isAuthenticated()">
+        Logged user: <strong sec:authentication="name"></strong>
+        Roles: <span sec:authentication="principal.authorities"></span>
+        <a class="btn btn-primary" href="/logout">Logout</a>
+      </div> -->
+    </div>
+  </div>
+</nav>
