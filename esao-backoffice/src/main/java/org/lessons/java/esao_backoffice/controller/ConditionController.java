@@ -1,7 +1,7 @@
 package org.lessons.java.esao_backoffice.controller;
 
 import org.lessons.java.esao_backoffice.model.Condition;
-import org.lessons.java.esao_backoffice.repository.ConditionRepository;
+import org.lessons.java.esao_backoffice.service.ConditionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,24 +19,23 @@ import jakarta.validation.Valid;
 public class ConditionController {
 
   @Autowired
-  private ConditionRepository conditionRepository;
+  private ConditionService conditionService;
 
   @GetMapping
   public String index(Model model) {
-    model.addAttribute("conditions", conditionRepository.findAll());
+    model.addAttribute("conditions", conditionService.findAll());
     return "conditions/index";
   }
 
   @GetMapping("/{id}")
   public String show(@PathVariable Integer id, Model model) {
-    model.addAttribute("condition", conditionRepository.findById(id).get());
+    model.addAttribute("condition", conditionService.getById(id));
     return "conditions/show";
   }
 
   @GetMapping("/create")
   public String create(Model model) {
-    Condition condition = new Condition();
-    model.addAttribute("condition", condition);
+    model.addAttribute("condition", new Condition());
     return "conditions/create-edit";
   }
 
@@ -45,13 +44,13 @@ public class ConditionController {
     if (bindingResult.hasErrors()) {
       return "conditions/create-edit";
     }
-    conditionRepository.save(conditionToStore);
+    conditionService.create(conditionToStore);
     return "redirect:/conditions";
   }
 
   @GetMapping("/edit/{id}")
   public String edit(@PathVariable Integer id, Model model) {
-    model.addAttribute("condition", conditionRepository.findById(id).get());
+    model.addAttribute("condition", conditionService.getById(id));
     model.addAttribute("edit", true);
     return "conditions/create-edit";
   }
@@ -61,13 +60,13 @@ public class ConditionController {
     if (bindingResult.hasErrors()) {
       return "conditions/create-edit";
     }
-    conditionRepository.save(conditionToUpdate);
+    conditionService.edit(conditionToUpdate);
     return "redirect:/conditions";
   }
 
   @PostMapping("/delete/{id}")
   public String delete(@PathVariable Integer id) {
-    conditionRepository.deleteById(id);
+    conditionService.deleteById(id);
     return "redirect:/conditions";
   }
 

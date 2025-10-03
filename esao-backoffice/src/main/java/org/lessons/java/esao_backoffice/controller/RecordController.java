@@ -1,8 +1,8 @@
 package org.lessons.java.esao_backoffice.controller;
 
 import org.lessons.java.esao_backoffice.model.Record;
-import org.lessons.java.esao_backoffice.repository.ConditionRepository;
-import org.lessons.java.esao_backoffice.repository.RecordRepository;
+import org.lessons.java.esao_backoffice.service.ConditionService;
+import org.lessons.java.esao_backoffice.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,28 +20,27 @@ import jakarta.validation.Valid;
 public class RecordController {
 
   @Autowired
-  private RecordRepository recordRepository;
+  private RecordService recordService;
 
   @Autowired
-  private ConditionRepository conditionRepository;
+  private ConditionService conditionService;
 
   @GetMapping
   public String index(Model model) {
-    model.addAttribute("records", recordRepository.findAll());
+    model.addAttribute("records", recordService.findAll());
     return "records/index";
   }
 
   @GetMapping("/{id}")
   public String show(@PathVariable Integer id, Model model) {
-    model.addAttribute("record", recordRepository.findById(id).get());
+    model.addAttribute("record", recordService.getById(id));
     return "records/show";
   }
 
   @GetMapping("/create")
   public String create(Model model) {
-    Record record = new Record();
-    model.addAttribute("record", record);
-    model.addAttribute("conditions", conditionRepository.findAll());
+    model.addAttribute("record", new Record());
+    model.addAttribute("conditions", conditionService.findAll());
     return "records/create-edit";
   }
 
@@ -49,18 +48,18 @@ public class RecordController {
   public String store(@Valid @ModelAttribute("record") Record recordToStore, BindingResult bindingResult, Model model) {
 
     if (bindingResult.hasErrors()) {
-      model.addAttribute("conditions", conditionRepository.findAll());
+      model.addAttribute("conditions", conditionService.findAll());
       return "records/create-edit";
     }
 
-    recordRepository.save(recordToStore);
+    recordService.create(recordToStore);
     return "redirect:/records";
   }
 
   @GetMapping("/edit/{id}")
   public String edit(@PathVariable Integer id, Model model) {
-    model.addAttribute("record", recordRepository.findById(id).get());
-    model.addAttribute("conditions", conditionRepository.findAll());
+    model.addAttribute("record", recordService.getById(id));
+    model.addAttribute("conditions", conditionService.findAll());
     model.addAttribute("edit", true);
     return "records/create-edit";
   }
@@ -70,17 +69,17 @@ public class RecordController {
       Model model) {
 
     if (bindingResult.hasErrors()) {
-      model.addAttribute("conditions", conditionRepository.findAll());
+      model.addAttribute("conditions", conditionService.findAll());
       return "records/create-edit";
     }
 
-    recordRepository.save(recordToStore);
+    recordService.edit(recordToStore);
     return "redirect:/records";
   }
 
   @PostMapping("/delete/{id}")
   public String delete(@PathVariable Integer id) {
-    recordRepository.deleteById(id);
+    recordService.deleteById(id);
     return "redirect:/records";
   }
 }
