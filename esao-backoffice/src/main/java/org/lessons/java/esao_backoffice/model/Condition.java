@@ -2,6 +2,7 @@ package org.lessons.java.esao_backoffice.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,7 +27,7 @@ public class Condition {
   @NotBlank(message = "La descrizione di questo stato di conservazione è obbligatoria")
   private String description;
 
-  @OneToMany(mappedBy = "condition")
+  @OneToMany(mappedBy = "condition", cascade = CascadeType.REMOVE)
   private List<Record> records;
 
   public Condition() {
