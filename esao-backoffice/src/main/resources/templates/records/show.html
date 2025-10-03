@@ -21,18 +21,31 @@
 
       <div class="mb-3 d-flex justify-content-between">
         <h3>Stato di conservazione: <strong>[[*{condition.name}]]</strong></h3>
-        <a class="btn btn-primary" th:href="@{/conditions}">Visualizza tutti</a>
+        <a class="btn btn-primary" th:href="@{/conditions}">Visualizza tutti gli Stati</a>
       </div>
 
-      <h4 class="mb-2">Anno di stampa: <strong>[[*{pressingYear}]]</strong> <span th:if="*{isFirstPress}">(Prima
+      <h4 class="mb-3">Anno di stampa: <strong>[[*{pressingYear}]]</strong> <span th:if="*{isFirstPress}">(Prima
           stampa!)</span></h4>
-      <h4 class="mb-2" th:if="*{duration}">Durata del disco: <strong>[[*{duration}]]</strong></h4>
-      <span class="mb-2" th:if="*{description}">
+      <h4 class="mb-3" th:if="*{duration}">Durata del disco: <strong>[[*{duration}]]</strong></h4>
+      <div class="mb-3" th:if="*{description}">
         <h4 class="mb-1">Descrizione:</h4>
         <p>[[*{description}]]</p>
-      </span>
+      </div>
 
-      <a th:href="*{listeningLink}" target="_blank">Link all'ascolto</a>
+      <div class="mb-4">
+        <a th:href="*{listeningLink}" target="_blank">Link all'ascolto</a>
+      </div>
+
+
+      <div class="d-flex">
+        <a class="btn btn-warning" th:href="@{/records/edit/{id}(id=*{id})}">Modifica</a>
+
+        <form th:action="@{/records/delete/{id}(id=*{id})}" method="post">
+          <button class="btn btn-danger" type="submit">Elimina</button>
+        </form>
+      </div>
+
+
 
     </div>
   </main>
