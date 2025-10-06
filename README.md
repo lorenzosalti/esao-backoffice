@@ -10,3 +10,15 @@ L'accesso al backoffice richiederà un'autenticazione gestita da Spring Security
 Le due entità sono collegate tramite una relazione **1-N**.
 
 Per entrambe le entità sono implementate tutte le operazioni **CRUD** (Creazione, Lettura, Aggiornamento, Eliminazione).
+
+---
+
+## Parte 2: Frontend in React
+
+Per i visitatori non autenticati (*guest*) è stata creata un'app in React che permette di:
+
+- Visualizzare la lista degli elementi *Record*
+- Vedere i dettagli di un singolo *Record*
+- Mostrare anche le informazioni riguardo lo stato di conservazione del vinile (*Condition*)
+
+Questa app comunica con il backend tramite chiamate **AJAX** ad **API REST**, quindi nel backend è stato creato un set di endpoint **API** per recuperare i dati.
