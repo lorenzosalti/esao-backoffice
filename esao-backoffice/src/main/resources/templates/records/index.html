@@ -11,28 +11,30 @@
 
       <div th:if="${records.size() > 0}">
         <h2 class="text-center mb-3">Lista di dischi</h2>
-        <table>
+        <table class="table table-striped">
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Titolo</th>
-              <th>Artista</th>
-              <th>Condizione</th>
-              <th></th>
-              <th></th>
-              <th></th>
+              <th scope="col">Id</th>
+              <th scope="col">Titolo</th>
+              <th scope="col">Artista</th>
+              <th scope="col">Condizione</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
             <tr th:each="record : ${records}" th:object="${record}">
-              <td>[[*{id}]]</td>
+              <td scope="row">[[*{id}]]</td>
               <td>[[*{title}]]</td>
               <td>[[*{artist}]]</td>
               <td>[[*{condition.name}]]</td>
-              <td><a class="btn btn-primary" th:href="@{/records/{id}(id=*{id})}">Dettaglio</a></td>
-              <td><a class="btn btn-warning" th:href="@{/records/edit/{id}(id=*{id})}">Modifica</a></td>
-              <td>
-                <button class="btn btn-danger" type="button" data-bs-toggle="modal"
+              <td class="text-end"><a class="btn btn-primary btn-sm" th:href="@{/records/{id}(id=*{id})}">Dettaglio</a>
+              </td>
+              <td class="text-end"><a class="btn btn-warning btn-sm"
+                  th:href="@{/records/edit/{id}(id=*{id})}">Modifica</a></td>
+              <td class="text-end">
+                <button class="btn btn-danger btn-sm" type="button" data-bs-toggle="modal"
                   th:data-bs-target="'#delete-modal-' + *{id}">Elimina</button>
               </td>
               <div class="modal fade" th:id="'delete-modal-' + *{id}" tabindex="-1"
