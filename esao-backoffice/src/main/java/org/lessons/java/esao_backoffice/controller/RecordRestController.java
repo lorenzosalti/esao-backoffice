@@ -24,7 +24,11 @@ public class RecordRestController {
 
   @GetMapping
   public ResponseEntity<List<Record>> index() {
-    return new ResponseEntity<List<Record>>(recordService.findAll(), HttpStatus.OK);
+    List<Record> recordListAttempt = recordService.findAll();
+    if (recordListAttempt.isEmpty()) {
+      return new ResponseEntity<List<Record>>(HttpStatus.NOT_FOUND);
+    }
+    return new ResponseEntity<List<Record>>(recordListAttempt, HttpStatus.OK);
   }
 
   @GetMapping("/{id}")
@@ -33,7 +37,7 @@ public class RecordRestController {
     if (recordAttempt.isEmpty()) {
       return new ResponseEntity<Record>(HttpStatus.NOT_FOUND);
     }
-    return new ResponseEntity<Record>(recordService.getById(id), HttpStatus.OK);
+    return new ResponseEntity<Record>(recordAttempt.get(), HttpStatus.OK);
   }
 
 }
