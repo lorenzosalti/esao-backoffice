@@ -20,7 +20,7 @@
               <th scope="col">Condizione</th>
               <th scope="col"></th>
               <th scope="col"></th>
-              <th scope="col"></th>
+              <th scope="col" sec:authorize="hasAuthority('ADMIN') or hasAuthority('SUPERUSER')"></th>
             </tr>
           </thead>
           <tbody>
@@ -33,7 +33,7 @@
               </td>
               <td class="text-end"><a class="btn btn-warning btn-sm"
                   th:href="@{/records/edit/{id}(id=*{id})}">Modifica</a></td>
-              <td class="text-end">
+              <td class="text-end" sec:authorize="hasAuthority('ADMIN') or hasAuthority('SUPERUSER')">
                 <button class="btn btn-danger btn-sm" type="button" data-bs-toggle="modal"
                   th:data-bs-target="'#delete-modal-' + *{id}">Elimina</button>
               </td>

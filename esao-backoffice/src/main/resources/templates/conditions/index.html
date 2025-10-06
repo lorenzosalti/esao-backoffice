@@ -16,21 +16,21 @@
           <thead>
             <tr>
               <th scope="col">Stato</th>
-              <th scope="col" class="text-center">Dischi in questo Stato</th>
+              <th scope="col">Dischi in questo Stato</th>
               <th scope="col"></th>
-              <th scope="col"></th>
-              <th scope="col"></th>
+              <th scope="col" sec:authorize="hasAuthority('ADMIN')"></th>
+              <th scope="col" sec:authorize="hasAuthority('ADMIN')"></th>
             </tr>
           </thead>
           <tbody>
             <tr th:each="condition : ${conditions}" th:object="${condition}">
               <td>[[*{name}]]</td>
-              <td class="text-center">[[*{records.size()}]]</td>
+              <td>[[*{records.size()}]]</td>
               <td class="text-end"><a class="btn btn-primary btn-sm"
                   th:href="@{/conditions/{id}(id=*{id})}">Dettaglio</a></td>
-              <td class="text-end"><a class="btn btn-warning btn-sm"
+              <td class="text-end" sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-warning btn-sm"
                   th:href="@{/conditions/edit/{id}(id=*{id})}">Modifica</a></td>
-              <td class="text-end">
+              <td class="text-end" sec:authorize="hasAuthority('ADMIN')">
                 <button class="btn btn-danger btn-sm" type="button" data-bs-toggle="modal"
                   th:data-bs-target="'#delete-modal-' + *{id}">Elimina</button>
               </td>
@@ -64,7 +64,7 @@
         <h2 class="text-center mb-3">Non esistono informazioni riguardo gli stati di conservazione dei Dischi</h2>
       </div>
 
-      <a href="/conditions/create" class="btn btn-secondary">Crea Stato</a>
+      <a href="/conditions/create" class="btn btn-secondary" sec:authorize="hasAuthority('ADMIN')">Crea Stato</a>
     </div>
   </main>
 
