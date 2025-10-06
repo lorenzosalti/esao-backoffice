@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -25,6 +26,15 @@ public class RecordRestController {
   @GetMapping
   public ResponseEntity<List<Record>> index() {
     List<Record> recordListAttempt = recordService.findAll();
+    if (recordListAttempt.isEmpty()) {
+      return new ResponseEntity<List<Record>>(HttpStatus.NOT_FOUND);
+    }
+    return new ResponseEntity<List<Record>>(recordListAttempt, HttpStatus.OK);
+  }
+
+  @GetMapping("/search")
+  public ResponseEntity<List<Record>> search(@RequestParam String search) {
+    List<Record> recordListAttempt = recordService.findByTitle(search);
     if (recordListAttempt.isEmpty()) {
       return new ResponseEntity<List<Record>>(HttpStatus.NOT_FOUND);
     }
