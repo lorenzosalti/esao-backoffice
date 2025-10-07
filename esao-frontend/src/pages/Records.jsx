@@ -1,20 +1,28 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RecordCard from "../components/RecordCard";
 import axios from "axios";
+import GlobalContext from "../contexts/GlobalContext";
 
 function Records() {
 
   const [records, setRecords] = useState([]);
 
+  const { setIsLoading } = useContext(GlobalContext);
+
   const recordsUrl = "http://127.0.0.1:8080/api/records";
 
   function getRecords() {
+    setIsLoading(true);
 
     axios.get(recordsUrl)
-      .then(res =>
-        setRecords(res.data)
-      )
-      .catch(err => console.error(err))
+      .then(res => {
+        setRecords(res.data);
+        setIsLoading(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setIsLoading(false);
+      })
   };
 
   useEffect(getRecords, []);

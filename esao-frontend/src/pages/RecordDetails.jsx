@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import GlobalContext from "../contexts/GlobalContext";
 
 
 function RecordDetails() {
@@ -8,14 +9,24 @@ function RecordDetails() {
   const { id } = useParams();
   const [record, setRecord] = useState({});
 
+  const { setIsLoading } = useContext(GlobalContext);
+
   const recordUrl = `http://127.0.0.1:8080/api/records/${id}`;
 
   function getRecord() {
+
+    setIsLoading(true);
+
     axios.get(recordUrl)
-      .then(res =>
-        setRecord(res.data)
-      )
-      .catch(err => console.error(err))
+      .then(res => {
+        setRecord(res.data);
+        setIsLoading(false);
+
+      })
+      .catch(err => {
+        console.error(err);
+        setIsLoading(false);
+      })
   };
 
   useEffect(getRecord, [id]);
@@ -66,9 +77,9 @@ function RecordDetails() {
                 <li className="list-group-item d-flex align-items-center">
                   Prima Stampa:  {isFirstPress ? <span className={`badge bg-success fs-6`}>sì</span> : <span className={`badge bg-danger fs-6`}>no</span>}
                 </li>
-                {/* <li className="list-group-item">
-                  Stato di conservazione: <strong>{condition.name}</strong>
-                </li> */}
+                <li className="list-group-item">
+                  Stato di conservazione: <strong>{condition?.name}</strong>
+                </li>
               </ul>
             </div>
             <h4 className="mt-4">Descrizione</h4>
@@ -76,11 +87,11 @@ function RecordDetails() {
           </div>
         </div>
         {/* Sezione per lo stato di conservazione (un'idea carina) */}
-        {/* <div className="row mt-4">
+        <div className="row mt-4">
           <div className="col-12">
-            {condition.description}
+            {condition?.description}
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   );
