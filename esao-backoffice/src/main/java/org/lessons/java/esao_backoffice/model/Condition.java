@@ -2,6 +2,8 @@ package org.lessons.java.esao_backoffice.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +30,7 @@ public class Condition {
   private String description;
 
   @OneToMany(mappedBy = "condition", cascade = CascadeType.REMOVE)
+  @JsonBackReference
   private List<Record> records;
 
   public Condition() {

@@ -2,10 +2,11 @@ package org.lessons.java.esao_backoffice.model;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -51,9 +52,9 @@ public class Record {
   @OneToMany(mappedBy = "record")
   private List<Track> tracks;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "condition_id", nullable = false)
-  @JsonBackReference
+  @JsonManagedReference
   private Condition condition;
 
   public Record() {
