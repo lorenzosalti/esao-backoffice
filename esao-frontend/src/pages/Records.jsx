@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react"
-import RecordCard from "../components/RecordCard"
-import axios from "axios"
+import { useEffect, useState } from "react";
+import RecordCard from "../components/RecordCard";
+import axios from "axios";
 
 function Records() {
 
   const [records, setRecords] = useState([]);
 
-  const recordsUrl = "http://127.0.0.1:8080/api/records"
+  const recordsUrl = "http://127.0.0.1:8080/api/records";
 
   function getRecords() {
 
@@ -15,12 +15,14 @@ function Records() {
         setRecords(res.data)
       )
       .catch(err => console.error(err))
-  }
+  };
 
-  useEffect(getRecords, [])
+  useEffect(getRecords, []);
 
   return (
     <>
+      <h1 className="text-center mb-5">Dischi della collezione</h1>
+
       <div className="container text-center">
         <div className="row row-cols-3 gy-2">
 
@@ -31,7 +33,7 @@ function Records() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default Records
