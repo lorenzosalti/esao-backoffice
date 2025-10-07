@@ -1,0 +1,26 @@
+[
+  {
+    "id": 11,
+    "title": "Head Hunters",
+    "artist": "Herbie Hancock",
+    "pressingYear": "1973",
+    "isFirstPress": true,
+    "duration": "41m 35s",
+    "description": "Head Hunters è il dodicesimo album in studio del musicista statunitense Herbie Hancock, pubblicato il 13 ottobre 1973.\r\nFu un album cruciale e particolarmente significativo nella carriera del jazzista.",
+    "listeningLink": "https://open.spotify.com/album/5fmIolILp5NAtNYiRPjhzA?si=sUl__0pqTeynX9MIZOwDmQ",
+    "coverPath": "https://i.discogs.com/Yad6AtpVO1By1n4cMItblhZqmtmPCw7Wecdy9g8--NM/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTk5NzA3/MC0xMzgzNzU0NzE4/LTc2NDUuanBlZw.jpeg",
+    "tracks": []
+  },
+  {
+    "id": 12,
+    "title": "Indiano",
+    "artist": "Fabrizio de André",
+    "pressingYear": "1981",
+    "isFirstPress": true,
+    "duration": "40m 31s",
+    "description": "Decimo album in studio del cantautore italiano Fabrizio De André, pubblicato nel 1981. \r\nIl suo tema è il confronto tra due popoli, il popolo dei sardi e quello dei pellerossa, per certi versi affini e per certi altri molto diversi, entrambi vittime della colonizzazione.",
+    "listeningLink": "https://open.spotify.com/album/0eZ8Xuudp9Ih97ey602DTd?si=04-tQ15eQAS0dz6gPXBVpQ",
+    "coverPath": "https://i.discogs.com/0pdvII9gWaF5PVdgCvOu64iKdyClV_knPUU1_DfAM4Q/rs:fit/g:sm/q:90/h:591/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI1NjI1/NDMtMTU5NzA2MDMz/MC0zMDk5LmpwZWc.jpeg",
+    "tracks": []
+  }
+]
