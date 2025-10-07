@@ -1,10 +1,19 @@
+import RecordCard from "../components/RecordCard"
+import records from "../data/records.json"
 
 function Records() {
 
   return (
     <>
-      <h1>Every Sound At Once!</h1>
-      <h2>Pagina di lista dei dischi</h2>
+      <div className="container text-center">
+        <div className="row row-cols-3 gy-2">
+
+          {records.map(record => (
+            <RecordCard key={record.id} data={record} />
+          ))}
+
+        </div>
+      </div>
     </>
   )
 }
