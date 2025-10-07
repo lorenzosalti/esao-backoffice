@@ -33,8 +33,8 @@ public class RecordRestController {
   }
 
   @GetMapping("/search")
-  public ResponseEntity<List<Record>> search(@RequestParam String search) {
-    List<Record> recordListAttempt = recordService.findByTitle(search);
+  public ResponseEntity<List<Record>> search(@RequestParam String title) {
+    List<Record> recordListAttempt = recordService.findByTitle(title);
     if (recordListAttempt.isEmpty()) {
       return new ResponseEntity<List<Record>>(HttpStatus.NOT_FOUND);
     }
