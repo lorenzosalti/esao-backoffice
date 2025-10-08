@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import GlobalContext from "../contexts/GlobalContext";
 
@@ -77,19 +77,14 @@ function RecordDetails() {
                 <li className="list-group-item d-flex align-items-center">
                   Prima Stampa:  {isFirstPress ? <span className={`badge bg-success fs-6`}>sì</span> : <span className={`badge bg-danger fs-6`}>no</span>}
                 </li>
-                <li className="list-group-item">
-                  Stato di conservazione: <strong>{condition?.name}</strong>
+                <li className="list-group-item d-flex justify-content-between">
+                  <span>Stato di conservazione: <strong>{condition?.name}</strong></span>
+                  <Link to="/conditions" className="btn btn-sm btn-primary">Maggiori dettagli</Link>
                 </li>
               </ul>
             </div>
             <h4 className="mt-4">Descrizione</h4>
             <p className="text-secondary">{description}</p>
-          </div>
-        </div>
-        {/* Sezione per lo stato di conservazione (un'idea carina) */}
-        <div className="row mt-4">
-          <div className="col-12">
-            {condition?.description}
           </div>
         </div>
       </div>
