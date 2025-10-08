@@ -29,26 +29,28 @@ function Conditions() {
   useEffect(getConditions, []);
 
   return (
-    <div className="container mt-5">
-      <h1 className="mb-4 text-center heading">Guida agli Stati di Conservazione (Grading)</h1>
-      <p className="lead text-center mb-5">
-        Consulta questa legenda per comprendere il grado di usura dei vinili nella collezione.
-      </p>
+    <div className="for-background">
+      <div className="container py-5">
+        <h1 className="mb-4 text-center heading">Guida agli Stati di Conservazione (Grading)</h1>
+        <p className="lead text-center mb-5">
+          Consulta questa legenda per comprendere il grado di usura dei vinili nella collezione.
+        </p>
 
-      <div className="row justify-content-center mb-5">
-        <div className="col-lg-8">
-          <ul className="list-group list-group-flush shadow-lg rounded">
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
+            <ul className="list-group list-group-flush shadow-lg rounded">
 
-            {conditions.length || isLoading ? conditions.map(condition => (
-              <li key={condition.id} className="list-group-item py-3 px-4">
-                <div >
-                  <h3 className="fw-bold fs-5 heading">{condition.name}</h3>
-                  <p>{condition.description}</p>
-                </div>
-              </li>
-            )) : <h2>404 Nessuno stato trovato</h2>}
+              {conditions.length || isLoading ? conditions.map(condition => (
+                <li key={condition.id} className="list-group-item py-3 px-4">
+                  <div >
+                    <h3 className="fw-bold fs-5 heading">{condition.name}</h3>
+                    <p>{condition.description}</p>
+                  </div>
+                </li>
+              )) : <h2>404 Nessuno stato trovato</h2>}
 
-          </ul>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@
 function Header() {
 
   return (
-    <header>
+    <header className="shadow-lg">
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">

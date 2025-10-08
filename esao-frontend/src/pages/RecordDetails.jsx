@@ -34,8 +34,8 @@ function RecordDetails() {
   const { title, artist, pressingYear, isFirstPress, duration, description, listeningLink, coverPath, condition } = record;
 
   return (
-    <>
-      <div className="container mt-5">
+    <div className="for-background">
+      <div className="container py-5">
 
         <div className="row mb-4">
           <div className="col-12">
@@ -88,7 +88,7 @@ function RecordDetails() {
           </div>
         </div>
       </div >
-    </>
+    </div>
   );
 }
 
