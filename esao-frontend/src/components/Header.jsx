@@ -19,7 +19,7 @@ function Header() {
                 <a className="nav-link" href="/records">Dischi</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/records/1">Conservazione</a>
+                <a className="nav-link" href="/conditions">Conservazione</a>
               </li>
             </ul>
           </div>
