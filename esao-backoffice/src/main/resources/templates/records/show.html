@@ -18,23 +18,30 @@
 
       <img class="d-block mx-auto mb-4" th:src="*{coverPath}" th:alt="|*{title} cover|" width="600px">
 
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between">
+          <h3>Stato di conservazione: <strong>[[*{condition.name}]]</strong></h3>
+          <a class="btn btn-primary" th:href="@{/conditions}">Visualizza tutti gli Stati</a>
+        </li>
 
-      <div class="mb-3 d-flex justify-content-between">
-        <h3>Stato di conservazione: <strong>[[*{condition.name}]]</strong></h3>
-        <a class="btn btn-primary" th:href="@{/conditions}">Visualizza tutti gli Stati</a>
-      </div>
+        <li class="list-group-item">
+          <h4>Anno di stampa: <strong>[[*{pressingYear}]]</strong> <span th:if="*{isFirstPress}">(Prima
+              stampa!)</span></h4>
+        </li>
 
-      <h4 class="mb-3">Anno di stampa: <strong>[[*{pressingYear}]]</strong> <span th:if="*{isFirstPress}">(Prima
-          stampa!)</span></h4>
-      <h4 class="mb-3" th:if="*{duration}">Durata del disco: <strong>[[*{duration}]]</strong></h4>
-      <div class="mb-3" th:if="*{description}">
-        <h4 class="mb-1">Descrizione:</h4>
-        <p>[[*{description}]]</p>
-      </div>
+        <li class="list-group-item" th:if="*{duration}">
+          <h4>Durata del disco: <strong>[[*{duration}]]</strong></h4>
+        </li>
 
-      <div class="mb-4">
-        <a class="btn btn-success btn-sm" th:href="*{listeningLink}" target="_blank">Link all'ascolto</a>
-      </div>
+        <li class="list-group-item" th:if="*{description}">
+          <h4 class="mb-1">Descrizione:</h4>
+          <p>[[*{description}]]</p>
+        </li>
+
+        <li class="list-group-item">
+          <a class="btn btn-success btn-sm" th:href="*{listeningLink}" target="_blank">Link all'ascolto</a>
+        </li>
+      </ul>
 
       <a class="btn btn-warning" th:href="@{/records/edit/{id}(id=*{id})}">Modifica</a>
 
