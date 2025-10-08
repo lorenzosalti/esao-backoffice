@@ -40,31 +40,19 @@ function RecordDetails() {
         <div className="row mb-4">
           <div className="col-12">
             <h1 className="display-4 fw-bold">{title}</h1>
-            <p className="lead text-muted">{artist}</p>
+            <p className="lead text-muted">by {artist}</p>
             <hr />
           </div>
         </div>
 
         <div className="row">
           <div className="col-md-5 mb-4">
-            <img
-              src={coverPath}
-              className="img-fluid rounded shadow-lg"
-              alt={`Copertina di ${title}`}
-            />
-            <a
-              href={listeningLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary btn-lg mt-4 w-100"
-            >
-              Ascolta il Disco
-            </a>
+            <img src={coverPath} className="img-fluid rounded shadow-lg" alt={`Copertina di ${title}`} />
           </div>
 
           <div className="col-md-7 mb-4">
             <div className="row mb-4">
-              <div className="col-lg-8">
+              <div className="col">
                 <h4 className="mb-3">Dettagli Tecnici</h4>
                 <ul className="list-group list-group-flush shadow-lg rounded">
                   <li className="list-group-item py-3 px-4">
@@ -78,16 +66,19 @@ function RecordDetails() {
                   </li>
                   <li className="list-group-item py-3 px-4 d-flex justify-content-between">
                     <span>Stato di conservazione: <strong>{condition?.name}</strong></span>
-                    <Link to="/conditions" className="btn btn-sm btn-primary">Guida ai gradi</Link>
+                    <Link to="/conditions" className="btn btn-sm btn-primary shadow">Guida ai gradi</Link>
                   </li>
                 </ul>
               </div>
             </div>
             <h4 className="mt-4">Descrizione</h4>
             <p className="text-secondary">{description}</p>
+            <a href={listeningLink} target="_blank" className="btn btn-primary btn-lg mt-4 w-100 shadow">
+              Ascolta il Disco
+            </a>
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 }
