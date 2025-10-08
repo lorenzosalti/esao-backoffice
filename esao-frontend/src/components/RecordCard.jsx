@@ -8,10 +8,14 @@ function RecordCard({ data }) {
     <div className="col-lg-3 col-md-4 col-sm-6 mb-4">
       <div className="card h-100 shadow-sm border-0">
         <a href={`/records/${id}`} className="text-decoration-none">
-          <img src={coverPath}
-            className="card-img-top"
-            alt="Copertina"
-            style={{ height: '250px', objectFit: 'cover' }} />
+          {coverPath
+            ? <img src={coverPath}
+              className="card-img-top"
+              alt="Copertina"
+              style={{ height: '250px', objectFit: 'cover' }} />
+            : <img src="../images/missing-cover.png"
+              alt="Copertina Mancante"
+              style={{ height: '250px', objectFit: 'cover' }} />}
         </a>
         <div className="card-body d-flex flex-column">
           <h5 className="card-title text-truncate mb-1 heading">{title}</h5>

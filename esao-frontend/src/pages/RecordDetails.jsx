@@ -47,7 +47,9 @@ function RecordDetails() {
 
         <div className="row">
           <div className="col-md-5 mb-4">
-            <img src={coverPath} className="img-fluid rounded shadow-lg" alt={`Copertina di ${title}`} style={{ width: "600px" }} />
+            {coverPath
+              ? <img src={coverPath} className="img-fluid rounded shadow-lg" alt={`Copertina di ${title}`} style={{ width: "600px" }} />
+              : <img src="../images/missing-cover.png" className="img-fluid rounded shadow-lg" alt={`Copertina Mancante`} style={{ width: "600px" }} />}
           </div>
 
           <div className="col-md-7 mb-4">
@@ -55,9 +57,9 @@ function RecordDetails() {
               <div className="col">
                 <h4 className="mb-3 heading">Dettagli Tecnici</h4>
                 <ul className="list-group list-group-flush shadow-lg rounded">
-                  <li className="list-group-item py-3 px-4">
+                  {duration && <li className="list-group-item py-3 px-4">
                     Durata totale: <strong>{duration}</strong>
-                  </li>
+                  </li>}
                   <li className="list-group-item py-3 px-4">
                     Anno di stampa: <strong>{pressingYear}</strong>
                   </li>
@@ -71,11 +73,18 @@ function RecordDetails() {
                 </ul>
               </div>
             </div>
-            <h4 className="mt-4 heading">Descrizione</h4>
-            <p>{description}</p>
-            <a href={listeningLink} target="_blank" className="btn btn-lg mt-4 w-100 shadow">
-              Ascolta il Disco
-            </a>
+            {description && <>
+              <h4 className="mt-4 heading">Descrizione</h4>
+              <p>{description}</p>
+            </>}
+            {listeningLink
+              ? <a href={listeningLink} target="_blank" className="btn btn-lg mt-4 w-100 shadow">
+                Ascolta il Disco
+              </a>
+              : <button className="btn btn-lg mt-4 w-100 shadow" disabled>
+                Link all'ascolto non disponibile
+              </button>}
+
           </div>
         </div>
       </div >
