@@ -63,25 +63,25 @@ function RecordDetails() {
           </div>
 
           <div className="col-md-7 mb-4">
-            <div className="card shadow-sm mb-4">
-              <div className="card-header bg-light">
-                Dettagli Tecnici
+            <div className="row mb-4">
+              <div className="col-lg-8">
+                <h4 className="mb-3">Dettagli Tecnici</h4>
+                <ul className="list-group list-group-flush shadow-lg rounded">
+                  <li className="list-group-item py-3 px-4">
+                    Durata totale: <strong>{duration}</strong>
+                  </li>
+                  <li className="list-group-item py-3 px-4">
+                    Anno di stampa: <strong>{pressingYear}</strong>
+                  </li>
+                  <li className="list-group-item py-3 px-4 d-flex align-items-center">
+                    <span>Prima Stampa: {isFirstPress ? <span className="badge bg-success fs-6">&#10003;</span> : <span className="badge bg-danger fs-6">&#10005;</span>}</span>
+                  </li>
+                  <li className="list-group-item py-3 px-4 d-flex justify-content-between">
+                    <span>Stato di conservazione: <strong>{condition?.name}</strong></span>
+                    <Link to="/conditions" className="btn btn-sm btn-primary">Guida ai gradi</Link>
+                  </li>
+                </ul>
               </div>
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  Anno di stampa: <strong>{pressingYear}</strong>
-                </li>
-                <li className="list-group-item">
-                  Durata totale: <strong>{duration}</strong>
-                </li>
-                <li className="list-group-item d-flex align-items-center">
-                  Prima Stampa:  {isFirstPress ? <span className="badge bg-success fs-6">&#10003;</span> : <span className="badge bg-danger fs-6">&#10005;</span>}
-                </li>
-                <li className="list-group-item d-flex justify-content-between">
-                  <span>Stato di conservazione: <strong>{condition?.name}</strong></span>
-                  <Link to="/conditions" className="btn btn-sm btn-primary">Guida ai gradi</Link>
-                </li>
-              </ul>
             </div>
             <h4 className="mt-4">Descrizione</h4>
             <p className="text-secondary">{description}</p>
