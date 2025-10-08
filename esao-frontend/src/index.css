@@ -14,6 +14,10 @@ main {
   flex-grow: 1;
 }
 
+nav img {
+  max-height: 100px;
+}
+
 a,
 .nav-link {
   color: #F3E8D7;
