@@ -4,6 +4,7 @@ import RecordDetails from "./pages/RecordDetails"
 import DefaultLayout from "./layouts/DefaultLayout"
 import GlobalContext from "./contexts/GlobalContext"
 import { useState } from "react"
+import Conditions from "./pages/Conditions"
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<h1>Pagina di Home</h1>} />
             <Route path="/records" element={<Records />} />
             <Route path="/records/:id" element={<RecordDetails />} />
+            <Route path="/conditions" element={<Conditions />} />
             <Route path="*" element={<h1>404 Not Found</h1>} />
           </Route>
         </Routes>
