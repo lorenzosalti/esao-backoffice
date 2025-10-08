@@ -8,10 +8,25 @@
 
 header {
   background-color: #201E1E;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  height: 10vh;
 }
 
 main {
   flex-grow: 1;
+
+}
+
+.for-background {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5)), url('../public/images/jumbo.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height: 80vh;
 }
 
 nav img {
@@ -50,6 +65,14 @@ a:hover,
   color: #F2C14E;
 }
 
+section.jumbotron {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5)), url('../public/images/jumbo.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 80vh;
+}
+
 footer {
   background-color: #201E1E;
+  height: 10vh;
 }

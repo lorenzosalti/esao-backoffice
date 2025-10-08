@@ -28,7 +28,7 @@ function Records() {
   useEffect(getRecords, []);
 
   return (
-    <>
+    <div className="for-background">
       <div className="container text-center py-5">
         <h1 className="text-center mb-5 heading">Dischi della collezione</h1>
 
@@ -40,7 +40,7 @@ function Records() {
 
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
