@@ -29,9 +29,9 @@ function Records() {
 
   return (
     <>
-      <h1 className="text-center mb-5 heading">Dischi della collezione</h1>
+      <div className="container text-center py-5">
+        <h1 className="text-center mb-5 heading">Dischi della collezione</h1>
 
-      <div className="container text-center">
         <div className="row row-cols-3 gy-2">
 
           {records.length || isLoading ? records.map(record => (
