@@ -1,7 +1,5 @@
 package org.lessons.java.esao_backoffice.model;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
@@ -13,7 +11,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -48,9 +45,6 @@ public class Record {
 
   @Column(name = "cover_path")
   private String coverPath;
-
-  @OneToMany(mappedBy = "record")
-  private List<Track> tracks;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "condition_id", nullable = false)
@@ -130,14 +124,6 @@ public class Record {
 
   public void setCoverPath(String coverPath) {
     this.coverPath = coverPath;
-  }
-
-  public List<Track> getTracks() {
-    return tracks;
-  }
-
-  public void setTracks(List<Track> tracks) {
-    this.tracks = tracks;
   }
 
   public Condition getCondition() {
