@@ -58,7 +58,7 @@ function RecordDetails() {
               rel="noopener noreferrer"
               className="btn btn-primary btn-lg mt-4 w-100"
             >
-              🎧 Ascolta il Disco Esternamente
+              Ascolta il Disco
             </a>
           </div>
 
@@ -75,11 +75,11 @@ function RecordDetails() {
                   Durata totale: <strong>{duration}</strong>
                 </li>
                 <li className="list-group-item d-flex align-items-center">
-                  Prima Stampa:  {isFirstPress ? <span className={`badge bg-success fs-6`}>sì</span> : <span className={`badge bg-danger fs-6`}>no</span>}
+                  Prima Stampa:  {isFirstPress ? <span className="badge bg-success fs-6">&#10003;</span> : <span className="badge bg-danger fs-6">&#10005;</span>}
                 </li>
                 <li className="list-group-item d-flex justify-content-between">
                   <span>Stato di conservazione: <strong>{condition?.name}</strong></span>
-                  <Link to="/conditions" className="btn btn-sm btn-primary">Maggiori dettagli</Link>
+                  <Link to="/conditions" className="btn btn-sm btn-primary">Guida ai gradi</Link>
                 </li>
               </ul>
             </div>
