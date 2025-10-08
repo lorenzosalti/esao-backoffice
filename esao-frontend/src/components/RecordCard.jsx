@@ -14,11 +14,11 @@ function RecordCard({ data }) {
             style={{ height: '250px', objectFit: 'cover' }} />
         </a>
         <div className="card-body d-flex flex-column">
-          <h5 className="card-title text-truncate mb-1">{title}</h5>
-          <h6 className="card-subtitle mb-2 text-muted text-truncate">{artist}</h6>
+          <h5 className="card-title text-truncate mb-1 heading">{title}</h5>
+          <h6 className="card-subtitle mb-2 text-truncate">by {artist}</h6>
           <p className="card-text small mb-3">Anno di stampa: {pressingYear}</p>
           <div className="mt-auto">
-            <a href={`/records/${id}`} className="btn btn-primary btn-sm w-100">Dettagli</a>
+            <a href={`/records/${id}`} className="btn btn-sm w-100">Dettagli</a>
           </div>
         </div>
       </div>

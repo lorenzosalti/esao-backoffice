@@ -39,8 +39,8 @@ function RecordDetails() {
 
         <div className="row mb-4">
           <div className="col-12">
-            <h1 className="display-4 fw-bold">{title}</h1>
-            <p className="lead text-muted">by {artist}</p>
+            <h1 className="display-4 fw-bold heading">{title}</h1>
+            <p className="lead">by {artist}</p>
             <hr />
           </div>
         </div>
@@ -53,7 +53,7 @@ function RecordDetails() {
           <div className="col-md-7 mb-4">
             <div className="row mb-4">
               <div className="col">
-                <h4 className="mb-3">Dettagli Tecnici</h4>
+                <h4 className="mb-3 heading">Dettagli Tecnici</h4>
                 <ul className="list-group list-group-flush shadow-lg rounded">
                   <li className="list-group-item py-3 px-4">
                     Durata totale: <strong>{duration}</strong>
@@ -66,14 +66,14 @@ function RecordDetails() {
                   </li>
                   <li className="list-group-item py-3 px-4 d-flex justify-content-between">
                     <span>Stato di conservazione: <strong>{condition?.name}</strong></span>
-                    <Link to="/conditions" className="btn btn-sm btn-primary shadow">Guida ai gradi</Link>
+                    <Link to="/conditions" className="btn btn-sm shadow">Guida ai gradi</Link>
                   </li>
                 </ul>
               </div>
             </div>
-            <h4 className="mt-4">Descrizione</h4>
-            <p className="text-secondary">{description}</p>
-            <a href={listeningLink} target="_blank" className="btn btn-primary btn-lg mt-4 w-100 shadow">
+            <h4 className="mt-4 heading">Descrizione</h4>
+            <p>{description}</p>
+            <a href={listeningLink} target="_blank" className="btn btn-lg mt-4 w-100 shadow">
               Ascolta il Disco
             </a>
           </div>

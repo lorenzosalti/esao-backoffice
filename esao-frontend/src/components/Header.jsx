@@ -4,9 +4,11 @@ function Header() {
 
   return (
     <header className="mb-3">
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">ESAO</a>
+          <a className="navbar-brand" href="/">
+            {/* <img src="../images/ESAO-logo.png" alt="ESAO" /> */}
+          </a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>

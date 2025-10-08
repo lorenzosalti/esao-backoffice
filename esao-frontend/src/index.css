@@ -1,0 +1,51 @@
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #F3E8D7;
+  background-color: #181616;
+}
+
+header {
+  background-color: #201E1E;
+}
+
+main {
+  flex-grow: 1;
+}
+
+a,
+.nav-link {
+  color: #F3E8D7;
+}
+
+a:hover,
+.nav-link:hover {
+  color: #F2C14E;
+}
+
+.btn {
+  color: #F3E8D7;
+  background-color: #E86A33;
+}
+
+.btn:hover {
+  color: #F3E8D7;
+  background-color: #F2C14E;
+  transition: 200ms;
+}
+
+.card,
+.list-group-item {
+  color: #F3E8D7;
+  border-color: #F3E8D7;
+  background-color: #201E1E;
+}
+
+.heading {
+  color: #F2C14E;
+}
+
+footer {
+  background-color: #201E1E;
+}

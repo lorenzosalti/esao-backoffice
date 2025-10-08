@@ -30,8 +30,8 @@ function Conditions() {
 
   return (
     <div className="container mt-5">
-      <h1 className="mb-4 text-center">Guida agli Stati di Conservazione (Grading)</h1>
-      <p className="lead text-muted text-center mb-5">
+      <h1 className="mb-4 text-center heading">Guida agli Stati di Conservazione (Grading)</h1>
+      <p className="lead text-center mb-5">
         Consulta questa legenda per comprendere il grado di usura dei vinili nella collezione.
       </p>
 
@@ -42,8 +42,8 @@ function Conditions() {
             {conditions.length || isLoading ? conditions.map(condition => (
               <li key={condition.id} className="list-group-item py-3 px-4">
                 <div >
-                  <div className="fw-bold fs-5">{condition.name}</div>
-                  <small className="text-secondary">{condition.description}</small>
+                  <h3 className="fw-bold fs-5 heading">{condition.name}</h3>
+                  <p>{condition.description}</p>
                 </div>
               </li>
             )) : <h2>404 Nessuno stato trovato</h2>}
