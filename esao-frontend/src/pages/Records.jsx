@@ -7,7 +7,7 @@ function Records() {
 
   const [records, setRecords] = useState([]);
 
-  const { setIsLoading } = useContext(GlobalContext);
+  const { isLoading, setIsLoading } = useContext(GlobalContext);
 
   const recordsUrl = "http://127.0.0.1:8080/api/records";
 
@@ -34,7 +34,7 @@ function Records() {
       <div className="container text-center">
         <div className="row row-cols-3 gy-2">
 
-          {records.length ? records.map(record => (
+          {records.length || isLoading ? records.map(record => (
             <RecordCard key={record.id} data={record} />
           )) : <h2>404 Nessun disco trovato</h2>}
 
