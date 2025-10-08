@@ -5,6 +5,7 @@ import DefaultLayout from "./layouts/DefaultLayout"
 import GlobalContext from "./contexts/GlobalContext"
 import { useState } from "react"
 import Conditions from "./pages/Conditions"
+import Home from "./pages/Home"
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<DefaultLayout />}>
-            <Route path="/" element={<h1>Pagina di Home</h1>} />
+            <Route path="/" element={<Home />} />
             <Route path="/records" element={<Records />} />
             <Route path="/records/:id" element={<RecordDetails />} />
             <Route path="/conditions" element={<Conditions />} />
