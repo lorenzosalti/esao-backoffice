@@ -47,7 +47,7 @@ function RecordDetails() {
 
         <div className="row">
           <div className="col-md-5 mb-4">
-            <img src={coverPath} className="img-fluid rounded shadow-lg" alt={`Copertina di ${title}`} />
+            <img src={coverPath} className="img-fluid rounded shadow-lg" alt={`Copertina di ${title}`} style={{ width: "600px" }} />
           </div>
 
           <div className="col-md-7 mb-4">
