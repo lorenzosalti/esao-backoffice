@@ -39,7 +39,11 @@
         </li>
 
         <li class="list-group-item">
-          <a class="btn btn-success btn-sm" th:href="*{listeningLink}" target="_blank">Link all'ascolto</a>
+          <a th:unless="*{listeningLink.isEmpty()}" class="btn btn-success btn-sm" th:href="*{listeningLink}"
+            target="_blank">Link
+            all'ascolto</a>
+          <button th:if="*{listeningLink.isEmpty()}" disabled class="btn btn-success btn-sm">Link
+            all'ascolto</button>
         </li>
       </ul>
 
