@@ -18,10 +18,6 @@ public class RecordService {
     return recordRepository.findAll();
   }
 
-  public List<Record> findByTitle(String title) {
-    return recordRepository.findByTitleContaining(title);
-  }
-
   public Optional<Record> findById(Integer id) {
     return recordRepository.findById(id);
   }
