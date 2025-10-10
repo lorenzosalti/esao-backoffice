@@ -19,19 +19,21 @@
 
       <div class="mb-3" th:if="*{records.size() > 0}">
         <h4 class="mb-3">Lista di Dischi in questo Stato</h4>
-        <table>
+        <table class="table table-striped">
           <thead>
             <tr>
-              <th>Titolo</th>
-              <th>Artista</th>
-              <th></th>
+              <th scope="col">Id</th>
+              <th scope="col">Titolo</th>
+              <th scope="col">Artista</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
             <tr th:each="record : *{records}" th:object="${record}">
+              <td scope="row">[[*{id}]]</td>
               <td>[[*{title}]]</td>
               <td>[[*{artist}]]</td>
-              <td><a class="btn btn-primary" th:href="@{/records/{id}(id=*{id})}">Dettaglio</a></td>
+              <td class="text-end"><a class="btn btn-primary" th:href="@{/records/{id}(id=*{id})}">Dettaglio</a></td>
             </tr>
           </tbody>
         </table>
